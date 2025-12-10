@@ -1,0 +1,31 @@
+TESLA CAR INVENTORY MANAGEMENT SCHEMA
+
+
+Users (userid(pk), username, password, usertype, email, phonenumber)
+
+Suppliers (supplierid(pk), suppliername, phonenumber, address, email)
+
+Cars (carid(pk), modelname, enginenumber, yearmaufactured, batterycapacity,
+      price, status, stock, color, carimage, supplierid(fk))
+
+Car_Sales (Saleid(pk), datesold, carid(fk), userid(fk))
+
+-- Insert dummy users (Pakistani names)
+INSERT INTO Users (userid, username, password, usertype, email, phonenumber) VALUES (1, 'ahmed_khan', 'pass123', 'admin', 'ahmed.khan@email.com', '03001234567');
+INSERT INTO Users (userid, username, password, usertype, email, phonenumber) VALUES (2, 'fatima_ali', 'pass456', 'customer', 'fatima.ali@email.com', '03111234567');
+INSERT INTO Users (userid, username, password, usertype, email, phonenumber) VALUES (3, 'usman_rao', 'pass789', 'customer', 'usman.rao@email.com', '03211234567');
+
+-- Insert dummy suppliers (Pakistani names)
+INSERT INTO Suppliers (supplierid, suppliername, phonenumber, address, email) VALUES (1, 'Ali Autos', '0421234567', 'Mall Road, Lahore', 'contact@aliautos.pk');
+INSERT INTO Suppliers (supplierid, suppliername, phonenumber, address, email) VALUES (2, 'Karachi EV Supplies', '0217654321', 'Shahrah-e-Faisal, Karachi', 'info@karachiev.pk');
+
+-- Insert dummy cars
+INSERT INTO Cars (carid, modelname, enginenumber, yearmaufactured, batterycapacity, price, status, stock, color, carimage, supplierid)
+VALUES (1, 'Model S', 'ENGPK001', 2022, '100 kWh', 15000000, 'Available', 3, 'White', NULL, 1);
+
+INSERT INTO Cars (carid, modelname, enginenumber, yearmaufactured, batterycapacity, price, status, stock, color, carimage, supplierid)
+VALUES (2, 'Model 3', 'ENGPK002', 2023, '75 kWh', 12000000, 'Available', 5, 'Black', NULL, 2);
+
+-- Insert dummy car sales
+INSERT INTO Car_Sales (Saleid, datesold, carid, userid) VALUES (1, TO_DATE('2024-04-15', 'YYYY-MM-DD'), 1, 2);
+INSERT INTO Car_Sales (Saleid, datesold, carid, userid) VALUES (2, TO_DATE('2024-05-10', 'YYYY-MM-DD'), 2, 3);
